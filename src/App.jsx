@@ -1,10 +1,9 @@
 import React from 'react';
+import Reandering from './components/Rendering';
 
 const App = () => {
   return (
-    <div className="page">
-      <h1 className="page__title">Hello React 🚀</h1>
-    </div>
+    <Reandering/>
   );
 };
 
