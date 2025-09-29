@@ -66,3 +66,28 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: gray;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn.active {
+  background: green;
+}
+.btn.inactive {
+  background: red;
+}
+.btn:hover {
+  filter: brightness(1.2);
+}
+.btn:disabled {
+  background: lightgray;
+  cursor: not-allowed;
+  filter: none;
+}

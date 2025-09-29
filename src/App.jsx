@@ -1,11 +1,18 @@
-import React from 'react';
-import Reandering from './components/Rendering';
+import React from "react";
+import Rendering from "./components/Rendering";
+import HooksDemo from "./components/HooksDemo"
+import HookDemo from "./components/HooksDemo";
 
 const App = () => {
   return (
-    <Reandering/>
+    <>
+      <Rendering />
+      <HooksDemo />
+      <HookDemo />
+    </>
   );
 };
 
 export default App;
+
 

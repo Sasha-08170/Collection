@@ -78,6 +78,23 @@ const DynamicStyle = () => {
   return <p style={style}>Статус через inline-стили</p>;
 };
 
+// ==== Динамическая кнопка ====
+const DynamicButton = () => {
+  const [active, setActive] = useState(false);
+
+  return (
+    <div>
+      <h3>Динамический класс кнопки:</h3>
+      <button
+        className={active ? "btn active" : "btn"}
+        onClick={() => setActive(!active)}
+      >
+        {active ? "✅ Активна" : "⬜ Неактивна"}
+      </button>
+    </div>
+  );
+};
+
 // ==== Обработка события onClick ====
 const ClickButton = () => {
   const handleClick = () => alert("🔥 Кнопка нажата!");
@@ -203,6 +220,7 @@ const Rendering = () => {
       <RandomNumber />
       <StatusText />
       <DynamicStyle />
+      <DynamicButton />
       <ClickButton />
       <TaskList />
       <Card title="Карточка с children">
@@ -217,5 +235,6 @@ const Rendering = () => {
 };
 
 export default Rendering;
+
 
 
