@@ -11,7 +11,7 @@ const tasks = [
   { id: 2, title: "Build Components", done: false },
   { id: 3, title: "Master JSX", done: false },
 ];
-const statusCode = 2; // switch-case
+const statusCode = 2;
 
 // ==== Интерполяция переменных ====
 const Greeting = () => <h2>{userName + " " + userIcon}</h2>;
@@ -207,6 +207,103 @@ const ControlledInput = () => {
   );
 };
 
+// ==== Модальное окно ====
+const ModalExample = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <h3>Пример модального окна:</h3>
+      <button onClick={() => setOpen(true)}>Открыть модалку</button>
+
+      {open && (
+        <div
+          onClick={() => setOpen(false)}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: "#fff",
+              padding: "20px",
+              borderRadius: "8px",
+              minWidth: "300px",
+              textAlign: "center",
+            }}
+          >
+            <h4>Модальное окно</h4>
+            <p>📦 Это содержимое модалки</p>
+            <button onClick={() => setOpen(false)}>Закрыть</button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ==== Табы ====
+const TabsExample = () => {
+  const [active, setActive] = useState("tab1");
+
+  return (
+    <div>
+      <h3>Пример табов:</h3>
+      <div style={{ display: "flex", gap: "8px" }}>
+        <button onClick={() => setActive("tab1")}>
+          📑 Вкладка 1
+        </button>
+        <button onClick={() => setActive("tab2")}>
+          📑 Вкладка 2
+        </button>
+        <button onClick={() => setActive("tab3")}>
+          📑 Вкладка 3
+        </button>
+      </div>
+
+      <div style={{ marginTop: "10px", padding: "10px", border: "1px solid #ccc" }}>
+        {active === "tab1" && <p>📄 Контент первой вкладки</p>}
+        {active === "tab2" && <p>📄 Контент второй вкладки</p>}
+        {active === "tab3" && <p>📄 Контент третьей вкладки</p>}
+      </div>
+    </div>
+  );
+};
+
+// ==== Аккордеон ====
+const AccordionExample = () => {
+  const [open, setOpen] = useState(null);
+
+  const toggle = (id) => setOpen(open === id ? null : id);
+
+  return (
+    <div>
+      <h3>Пример аккордеона:</h3>
+      {[1, 2, 3].map((id) => (
+        <div key={id} style={{ border: "1px solid #ccc", margin: "5px 0" }}>
+          <div
+            style={{ padding: "10px", cursor: "pointer", background: "#f9f9f9" }}
+            onClick={() => toggle(id)}
+          >
+            Раздел {id}
+          </div>
+          {open === id && (
+            <div style={{ padding: "10px" }}>
+              📦 Контент раздела {id}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 // ==== Rendering ====
 const Rendering = () => {
   return (
@@ -230,11 +327,15 @@ const Rendering = () => {
       <StatusSwitch />
       <StyledTaskList />
       <ControlledInput />
+      <ModalExample />
+      <TabsExample />
+      <AccordionExample />
     </div>
   );
 };
 
 export default Rendering;
+
 
 
 
