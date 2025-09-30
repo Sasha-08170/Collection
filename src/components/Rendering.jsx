@@ -95,13 +95,30 @@ const DynamicButton = () => {
   );
 };
 
-// ==== Обработка события onClick ====
+// ==== Обработка события onClick с API ====
 const ClickButton = () => {
-  const handleClick = () => alert("🔥 Кнопка нажата!");
+  const [items, setItems] = useState([]);
+
+  const handleClick = async () => {
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+      const data = await res.json();
+      setItems((prev) => [...prev, data.title]);
+    } catch (error) {
+      console.error("Ошибка при загрузке:", error);
+    }
+  };
+
   return (
     <div>
-      <h3>Событие:</h3>
-      <button onClick={handleClick}>Нажми меня</button>
+      <h3>Добавление текста из API:</h3>
+      <button onClick={handleClick}>Загрузить текст</button>
+
+      <ul>
+        {items.map((txt, i) => (
+          <li key={i}>{txt}</li>
+        ))}
+      </ul>
     </div>
   );
 };
@@ -213,7 +230,7 @@ const ModalExample = () => {
 
   return (
     <div>
-      <h3>Пример модального окна:</h3>
+      <h3>Модальное окно:</h3>
       <button onClick={() => setOpen(true)}>Открыть модалку</button>
 
       {open && (
@@ -254,17 +271,11 @@ const TabsExample = () => {
 
   return (
     <div>
-      <h3>Пример табов:</h3>
+      <h3>Табы:</h3>
       <div style={{ display: "flex", gap: "8px" }}>
-        <button onClick={() => setActive("tab1")}>
-          📑 Вкладка 1
-        </button>
-        <button onClick={() => setActive("tab2")}>
-          📑 Вкладка 2
-        </button>
-        <button onClick={() => setActive("tab3")}>
-          📑 Вкладка 3
-        </button>
+        <button onClick={() => setActive("tab1")}>📑 Вкладка 1</button>
+        <button onClick={() => setActive("tab2")}>📑 Вкладка 2</button>
+        <button onClick={() => setActive("tab3")}>📑 Вкладка 3</button>
       </div>
 
       <div style={{ marginTop: "10px", padding: "10px", border: "1px solid #ccc" }}>
@@ -284,7 +295,7 @@ const AccordionExample = () => {
 
   return (
     <div>
-      <h3>Пример аккордеона:</h3>
+      <h3>Аккордеон:</h3>
       {[1, 2, 3].map((id) => (
         <div key={id} style={{ border: "1px solid #ccc", margin: "5px 0" }}>
           <div
@@ -293,11 +304,7 @@ const AccordionExample = () => {
           >
             Раздел {id}
           </div>
-          {open === id && (
-            <div style={{ padding: "10px" }}>
-              📦 Контент раздела {id}
-            </div>
-          )}
+          {open === id && <div style={{ padding: "10px" }}>📦 Контент раздела {id}</div>}
         </div>
       ))}
     </div>
@@ -335,6 +342,7 @@ const Rendering = () => {
 };
 
 export default Rendering;
+
 
 
 
