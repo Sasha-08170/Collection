@@ -140,7 +140,7 @@ const PreviousValue = () => {
 const FilteredList = () => {
   const [query, setQuery] = useState("");
 
-  const items = useMemo(() => ["React", "Vue", "Angular", "Svelte"], []);
+  const items = useMemo(() => ["React", "Redux", "Axios", "AWS"], []);
 
   const filtered = useMemo(() => {
     return items.filter((item) =>
