@@ -3,6 +3,7 @@ import Rendering from "./components/Rendering";
 import HooksDemo from "./components/HooksDemo"
 import ConstDemo from "./components/ConstDemo";
 import FiveTabsDemo from "./components/FiveTabsDemo";
+import AccordionExample from "./components/AccordionExample";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <HooksDemo />
       <ConstDemo />
       <FiveTabsDemo />
+      <AccordionExample />
     </>
   );
 };

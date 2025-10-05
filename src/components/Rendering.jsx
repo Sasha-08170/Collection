@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-// ==== Данные ====
 const userName = "Hello";
 const userIcon = "🚀";
 const isLoggedIn = true;
 const fruits = ["🍎 Apple", "🍌 Banana", "🍇 Grapes"];
-const user = { firstName: "Alex", lastName: "Dolinsky" };
+const user = { firstName: "Aleksandr Dolinsky" };
 const tasks = [
   { id: 1, title: "Learn React", done: true },
   { id: 2, title: "Build Components", done: false },
@@ -265,51 +264,6 @@ const ModalExample = () => {
   );
 };
 
-// ==== Табы ====
-const TabsExample = () => {
-  const [active, setActive] = useState("tab1");
-
-  return (
-    <div>
-      <h3>Табы:</h3>
-      <div style={{ display: "flex", gap: "8px" }}>
-        <button onClick={() => setActive("tab1")}>📑 Вкладка 1</button>
-        <button onClick={() => setActive("tab2")}>📑 Вкладка 2</button>
-        <button onClick={() => setActive("tab3")}>📑 Вкладка 3</button>
-      </div>
-
-      <div style={{ marginTop: "10px", padding: "10px", border: "1px solid #ccc" }}>
-        {active === "tab1" && <p>📄 Контент первой вкладки</p>}
-        {active === "tab2" && <p>📄 Контент второй вкладки</p>}
-        {active === "tab3" && <p>📄 Контент третьей вкладки</p>}
-      </div>
-    </div>
-  );
-};
-
-// ==== Аккордеон ====
-const AccordionExample = () => {
-  const [open, setOpen] = useState(null);
-
-  const toggle = (id) => setOpen(open === id ? null : id);
-
-  return (
-    <div>
-      <h3>Аккордеон:</h3>
-      {[1, 2, 3].map((id) => (
-        <div key={id} style={{ border: "1px solid #ccc", margin: "5px 0" }}>
-          <div
-            style={{ padding: "10px", cursor: "pointer", background: "#f9f9f9" }}
-            onClick={() => toggle(id)}
-          >
-            Раздел {id}
-          </div>
-          {open === id && <div style={{ padding: "10px" }}>📦 Контент раздела {id}</div>}
-        </div>
-      ))}
-    </div>
-  );
-};
 
 // ==== Rendering ====
 const Rendering = () => {
@@ -335,8 +289,6 @@ const Rendering = () => {
       <StyledTaskList />
       <ControlledInput />
       <ModalExample />
-      <TabsExample />
-      <AccordionExample />
     </div>
   );
 };

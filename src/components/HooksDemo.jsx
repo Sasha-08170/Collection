@@ -4,16 +4,15 @@ import React, {
   useReducer,
   useRef,
   useMemo,
-  useCallback,
   useLayoutEffect,
   useContext,
   useId,
   createContext,
 } from "react";
 
-// ==== useState: простое состояние ====
+// ==== useState: состояние ====
 const Counter = () => {
-  const [count, setCount] = useState(0); // состояние со счётчиком
+  const [count, setCount] = useState(0); 
   return (
     <div>
       <h3>Счётчик (useState):</h3>
@@ -108,20 +107,6 @@ const TaskManager = () => {
   );
 };
 
-// ==== useRef: доступ к DOM ====
-const FocusInput = () => {
-  const inputRef = useRef(null); // ссылка на DOM-элемент
-
-  const handleFocus = () => inputRef.current.focus();
-
-  return (
-    <div>
-      <h3>useRef пример:</h3>
-      <input ref={inputRef} type="text" placeholder="Фокус сюда" />
-      <button onClick={handleFocus}>Фокус на input</button>
-    </div>
-  );
-};
 
 // ==== useMemo: оптимизация вычислений ====
 const ExpensiveCalculation = ({ number }) => {
@@ -142,30 +127,6 @@ const MemoExample = () => {
       <h3>useMemo пример:</h3>
       <button onClick={() => setNum((n) => n + 1)}>➕ Увеличить число</button>
       <ExpensiveCalculation number={num} />
-    </div>
-  );
-};
-
-// ==== useCallback: мемоизация функции ====
-const Child = React.memo(({ onClick }) => {
-  console.log("Рендер дочернего компонента");
-  return <button onClick={onClick}>👶 Нажми ребёнка</button>;
-});
-
-const CallbackExample = () => {
-  const [count, setCount] = useState(0);
-
-  // useCallback мемоизирует функцию и предотвращает лишние рендеры Child
-  const handleClick = useCallback(() => {
-    alert("Кнопка из дочернего компонента");
-  }, []);
-
-  return (
-    <div>
-      <h3>useCallback пример:</h3>
-      <p>Счётчик: {count}</p>
-      <button onClick={() => setCount(count + 1)}>➕</button>
-      <Child onClick={handleClick} />
     </div>
   );
 };
@@ -197,7 +158,7 @@ const LayoutExample = () => {
 const ThemeContext = createContext("light");
 
 const ThemedBox = () => {
-  const theme = useContext(ThemeContext); // получаем значение темы
+  const theme = useContext(ThemeContext); 
   return (
     <div
       style={{
@@ -270,9 +231,7 @@ const HooksDemo = () => {
       <Counter />
       <Timer />
       <TaskManager />
-      <FocusInput />
       <MemoExample />
-      <CallbackExample />
       <LayoutExample />
       <ContextExample />
       <IdExample />
